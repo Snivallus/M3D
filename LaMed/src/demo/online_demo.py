@@ -1,7 +1,14 @@
-import argparse
-import os
-import re
 import sys
+import os
+
+# 关键路径设置（根据实际位置修改）
+project_root = os.path.abspath("/kaggle/working/M3D")  # 指向包含LaMed的父目录
+sys.path.insert(0, project_root)  # 必须插入到路径列表最前面
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # 屏蔽TensorFlow的日志
+
+import argparse
+import re
 import bleach
 import gradio as gr
 import numpy as np
@@ -11,10 +18,7 @@ import nibabel as nib
 import numpy as np
 from PIL import Image
 from monai.transforms import Resize
-from LaMed.src.model.language_model import *
-
-os.environ["TF_DISABLE_MLIR_COMPILER"] = "1"
-sys.path.append(os.path.abspath("/kaggle/working/M3D/LaMed/src"))
+from LaMed.src.model.language_model import LamedLlamaForCausalLM, LamedPhi3ForCausalLM
 
 def parse_args(args):
     parser = argparse.ArgumentParser(description="M3D-LaMed chat")
