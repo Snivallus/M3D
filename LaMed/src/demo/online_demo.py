@@ -13,6 +13,8 @@ from PIL import Image
 from monai.transforms import Resize
 from LaMed.src.model.language_model import *
 
+os.environ["TF_DISABLE_MLIR_COMPILER"] = "1"
+sys.path.append(os.path.abspath("/kaggle/working/M3D/LaMed/src"))
 
 def parse_args(args):
     parser = argparse.ArgumentParser(description="M3D-LaMed chat")
