@@ -18,7 +18,7 @@ import nibabel as nib
 import numpy as np
 from PIL import Image
 from monai.transforms import Resize
-# from LaMed.src.model.language_model import *
+from LaMed.src.model.language_model import *
 
 def parse_args(args):
     parser = argparse.ArgumentParser(description="M3D-LaMed chat")
